@@ -8,10 +8,13 @@ const firebaseConfig = {
   appId: "1:513745785810:web:ec8569196e9b52492eee0b"
 };
 
-  const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
   user_name = localStorage.getItem("user_name");
+  console.log("username: " + user_name);
   room_name = localStorage.getItem("room_name");
   document.getElementById("user_name").innerHTML = "welcome " + user_name + "!";
+
   function addRoom() {
         room_name = document.getElementById("room_name").value;
         firebase.database().ref("/").child(room_name).update({
@@ -38,4 +41,4 @@ function logout() {
       localStorage.removeItem("user_name");
       localStorage.removeItem("room_name");
       window.location = "index.html";
-}
+} 
